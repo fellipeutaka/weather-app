@@ -1,0 +1,33 @@
+{
+  "extends": ["next/core-web-vitals", "prettier"],
+  "plugins": ["import-helpers"],
+  "rules": {
+    "quotes": ["warn", "double"],
+    "semi": ["warn", "always"],
+    "arrow-parens": ["warn", "always"],
+    "no-unused-vars": ["warn", { "args": "none" }],
+    "prefer-const": "error",
+    "no-console": [
+      "warn",
+      {
+        "allow": ["warn", "error"]
+      }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          "/^react/",
+          "module",
+          "/^@weather/",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "ignoreCase": true
+        }
+      }
+    ]
+  }
+}
