@@ -8,8 +8,7 @@ if (!API_KEY) {
 
 export const api = axios.create({
   baseURL: "https://api.openweathermap.org/data/2.5",
-  headers: {
-    "Content-Type": "application/json",
-    "x-api-key": API_KEY,
+  params: {
+    appid: API_KEY,
   },
 });
