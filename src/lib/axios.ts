@@ -3,7 +3,7 @@ import axios from "axios";
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 if (!API_KEY) {
-  throw new Error("API_KEY is required in .env");
+  throw new Error("NEXT_PUBLIC_API_KEY is required in .env");
 }
 
 export const api = axios.create({
