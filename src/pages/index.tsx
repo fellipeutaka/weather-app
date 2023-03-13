@@ -1,22 +1,18 @@
-import { useEffect } from "react";
-
 import { Lato } from "next/font/google";
 
 import { Weather } from "@weather/components/ui/Weather";
+import { WeatherError } from "@weather/components/ui/WeatherError";
+import { WeatherLoading } from "@weather/components/ui/WeatherLoading";
 import { SEO } from "@weather/components/utils/SEO";
-import { getCurrentPosition } from "@weather/utils/getCurrentPosition";
+import { useCoords } from "@weather/hooks/useCoords";
 
 const lato = Lato({
-  weight: ["100", "300", "400", "700", "900"],
+  weight: ["400", "700"],
   subsets: ["latin"],
 });
 
 export default function Home() {
-  useEffect(() => {
-    getCurrentPosition().then(({ coords }) => {
-      console.log(coords);
-    });
-  }, []);
+  const { coords, error, isLoading } = useCoords();
 
   return (
     <SEO
@@ -26,7 +22,9 @@ export default function Home() {
       <main
         className={`${lato.className} grid min-h-screen place-items-center`}
       >
-        <Weather />
+        {isLoading && <WeatherLoading />}
+        {error && <WeatherError error={error} />}
+        {coords && <Weather coords={coords} />}
       </main>
     </SEO>
   );

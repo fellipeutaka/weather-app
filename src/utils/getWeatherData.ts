@@ -1,28 +1,30 @@
-import type { Forecast, AirQuality } from "@weather/@types/Weather";
-import { api } from "@weather/lib/axios";
+import dayjs from "dayjs";
+
+import type { AirQuality, Forecast } from "@weather/@types/Weather";
 
 type GetWeatherDataProps = {
-  latitude: number;
-  longitude: number;
+  forecast: Forecast;
+  airQuality: AirQuality;
 };
 
 export async function getWeatherData({
-  latitude,
-  longitude,
+  airQuality,
+  forecast,
 }: GetWeatherDataProps) {
-  const [forecast, airQuality] = await Promise.all([
-    api
-      .get<Forecast>(`/forecast?lat=${latitude}&lon=${longitude}&units=metric`)
-      .then(({ data }) => data),
-    api
-      .get<AirQuality>(
-        `/air_pollution?lat=${latitude}&lon=${longitude}&units=metric`
-      )
-      .then(({ data }) => data),
-  ]);
+  const currentTime = dayjs();
 
-  return {
-    forecast,
-    airQuality,
-  };
+  const filteredList = airQuality.list.filter((item) => {
+    const itemTime = dayjs.unix(item.dt);
+
+    return (
+      itemTime.isSame(currentTime, "hour") ||
+      (itemTime.isAfter(currentTime, "hour") &&
+        itemTime.diff(currentTime, "day") < 6 &&
+        itemTime.hour() === currentTime.hour())
+    );
+  });
+
+  console.log({ forecast, filteredList });
+
+  return { forecast, airQuality: filteredList };
 }

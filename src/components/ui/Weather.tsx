@@ -3,7 +3,11 @@ import { SunTime } from "./SunTime";
 import { TemperatureNow } from "./TemperatureNow";
 import { WeekWeather } from "./WeekWeather";
 
-export function Weather() {
+type WeatherProps = {
+  coords: GeolocationCoordinates;
+};
+
+export function Weather({ coords }: WeatherProps) {
   return (
     <main className="flex w-full flex-col gap-8 lg:max-w-6xl lg:flex-row">
       <TemperatureNow />
