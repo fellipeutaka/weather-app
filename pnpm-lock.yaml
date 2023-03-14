@@ -25,6 +25,7 @@ specifiers:
   react-dom: 18.2.0
   tailwindcss: ^3.2.7
   typescript: 4.9.5
+  zod: ^3.21.4
 
 dependencies:
   '@fluentui/react-icons': 2.0.196_react@18.2.0
@@ -38,6 +39,7 @@ dependencies:
   next: 13.2.4_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  zod: 3.21.4
 
 devDependencies:
   '@types/node': 18.14.6
@@ -2773,3 +2775,7 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  /zod/3.21.4:
+    resolution: {integrity: sha512-m46AKbrzKVzOzs/DZgVnG5H55N1sv1M8qZU3A8RIKbs3mrACDNeIOeilDymVb2HdmP8uwshOCF4uJ8uM9rCqJw==}
+    dev: false

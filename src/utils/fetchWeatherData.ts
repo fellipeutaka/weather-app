@@ -15,7 +15,7 @@ type FetchForecastProps = {
 
 export async function fetchForecast(
   { latitude, longitude }: FetchForecastProps,
-  config: AxiosRequestConfig
+  config?: AxiosRequestConfig
 ) {
   const { data } = await api.get<Forecast>(
     `/forecast?lat=${latitude}&lon=${longitude}&units=metric`,
@@ -52,7 +52,7 @@ type FetchAirPollutionProps = {
 
 export async function fetchAirPollution(
   { latitude, longitude }: FetchAirPollutionProps,
-  config: AxiosRequestConfig
+  config?: AxiosRequestConfig
 ) {
   const { data } = await api.get<AirQuality>(
     `/air_pollution?lat=${latitude}&lon=${longitude}&units=metric`,

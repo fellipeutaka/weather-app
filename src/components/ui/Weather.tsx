@@ -1,9 +1,7 @@
-import { QueryFunctionContext, useQueries } from "@tanstack/react-query";
+import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
-import {
-  fetchAirPollution,
-  fetchForecast,
-} from "@weather/utils/fetchWeatherData";
+import type { WeatherResponse } from "@weather/pages/api/weather";
 
 import { AirQuality } from "./AirQuality";
 import { SunTime } from "./SunTime";
@@ -15,36 +13,45 @@ type WeatherProps = {
 };
 
 export function Weather({ coords }: WeatherProps) {
-  const [forecast, airPollution] = useQueries({
-    queries: [
-      {
-        queryKey: ["forecast"],
-        queryFn: ({ signal }: QueryFunctionContext) =>
-          fetchForecast(coords, { signal }),
-      },
-      {
-        queryKey: ["airPollution"],
-        queryFn: ({ signal }: QueryFunctionContext) =>
-          fetchAirPollution(coords, { signal }),
-      },
-    ],
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["weather"],
+    queryFn: async ({ signal }: QueryFunctionContext) => {
+      const { data } = await axios.post<WeatherResponse>(
+        "/api/weather",
+        {
+          latitude: coords.latitude,
+          longitude: coords.longitude,
+        },
+        { signal }
+      );
+
+      return data;
+    },
   });
 
-  if (forecast.isLoading || airPollution.isLoading) {
+  if (isLoading) {
     return (
       <div>
-        <p>Loading...</p>
+        <span className="loading text-2xl font-bold">Getting your coords</span>
       </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <span className="loading text-2xl font-bold">
+        An error has ocurred. Try again later!
+      </span>
     );
   }
 
   return (
     <main className="flex w-full flex-col gap-8 lg:max-w-6xl lg:flex-row">
-      <TemperatureNow data={forecast.data!} />
+      <TemperatureNow data={data.forecast} />
       <div className="grid w-full grid-cols-2 grid-rows-2 gap-6">
-        <AirQuality data={airPollution.data!} />
+        <AirQuality data={data.airPollution} />
         <SunTime />
-        <WeekWeather data={forecast.data!} />
+        <WeekWeather data={data.forecast} />
       </div>
     </main>
   );
