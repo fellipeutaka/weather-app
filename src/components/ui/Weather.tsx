@@ -1,11 +1,13 @@
 import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
+import satelliteAnimation from "@weather/assets/animations/lottie-satellite.json";
 import type { WeatherResponse } from "@weather/pages/api/weather";
 
 import { AirQuality } from "./AirQuality";
 import { SunTime } from "./SunTime";
 import { TemperatureNow } from "./TemperatureNow";
+import { WeatherLoading } from "./WeatherLoading";
 import { WeekWeather } from "./WeekWeather";
 
 type WeatherProps = {
@@ -13,7 +15,7 @@ type WeatherProps = {
 };
 
 export function Weather({ coords }: WeatherProps) {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["weather"],
     queryFn: async ({ signal }: QueryFunctionContext) => {
       const { data } = await axios.post<WeatherResponse>(
@@ -31,17 +33,28 @@ export function Weather({ coords }: WeatherProps) {
 
   if (isLoading) {
     return (
-      <div>
-        <span className="loading text-2xl font-bold">Getting your coords</span>
-      </div>
+      <WeatherLoading
+        className="h-64 w-64"
+        message="Getting weather data"
+        animationData={satelliteAnimation}
+        speed={2}
+      />
     );
   }
 
   if (isError) {
     return (
-      <span className="loading text-2xl font-bold">
-        An error has ocurred. Try again later!
-      </span>
+      <div className="flex flex-col items-center gap-4">
+        <span className="text-2xl font-bold">
+          An error has occurred while trying to fetch weather data.
+        </span>
+        <button
+          className="rounded-md bg-secondary px-6 py-2 font-bold outline-none ring-offset-2 ring-offset-primary transition hover:brightness-90 focus-visible:ring-2 focus-visible:ring-secondary"
+          onClick={() => refetch()}
+        >
+          Try again
+        </button>
+      </div>
     );
   }
 

@@ -1,12 +1,28 @@
-import Lottie from "lottie-react";
+import { useRef } from "react";
 
-import compassAnimation from "@weather/assets/animations/lottie-compass.json";
+import Lottie, {
+  LottieComponentProps,
+  LottieRefCurrentProps,
+} from "lottie-react";
 
-export function WeatherLoading() {
+type WeatherLoadingProps = LottieComponentProps & {
+  message: string;
+  speed?: number;
+};
+
+export function WeatherLoading({
+  message,
+  speed = 1,
+  ...props
+}: WeatherLoadingProps) {
+  const lottieRef = useRef<LottieRefCurrentProps>(null);
+
+  lottieRef.current?.setSpeed(speed);
+
   return (
     <div className="flex flex-col items-center gap-4">
-      <span className="loading text-2xl font-bold">Getting your coords</span>
-      <Lottie className="w-h-32 h-32" animationData={compassAnimation} loop />
+      <span className="loading text-2xl font-bold">{message}</span>
+      <Lottie lottieRef={lottieRef} className="h-32 w-32" loop {...props} />
     </div>
   );
 }

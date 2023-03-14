@@ -1,5 +1,6 @@
 import { Lato } from "next/font/google";
 
+import compassAnimation from "@weather/assets/animations/lottie-compass.json";
 import { Weather } from "@weather/components/ui/Weather";
 import { WeatherError } from "@weather/components/ui/WeatherError";
 import { WeatherLoading } from "@weather/components/ui/WeatherLoading";
@@ -22,7 +23,13 @@ export default function Home() {
       <main
         className={`${lato.className} grid min-h-screen place-items-center`}
       >
-        {isLoading && <WeatherLoading />}
+        {isLoading && (
+          <WeatherLoading
+            message="Getting your coords"
+            animationData={compassAnimation}
+            speed={0.5}
+          />
+        )}
         {error && <WeatherError error={error} />}
         {coords && <Weather coords={coords} />}
       </main>
