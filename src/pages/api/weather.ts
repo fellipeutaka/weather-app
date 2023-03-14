@@ -12,6 +12,8 @@ const bodySchema = z.object({
   longitude: z.number(),
 });
 
+const revalidate = 1 * 60 * 60; // 1 hour
+
 export type WeatherResponse = {
   forecast: Forecast;
   airPollution: AirQuality;
@@ -31,7 +33,7 @@ export default async function handler(
     fetchAirPollution({ latitude, longitude }),
   ]);
   return res
-    .setHeader("Cache-Control", "s-maxage=10 stale-while-revalidate")
+    .setHeader("Cache-Control", `s-maxage=${revalidate} stale-while-revalidate`)
     .status(200)
     .json({ forecast, airPollution });
 }
