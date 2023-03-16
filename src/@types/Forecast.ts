@@ -31,12 +31,12 @@ export type ForecastList = {
     humidity: number;
     temp_kf: number;
   };
-  weather: Array<{
+  weather: {
     id: number;
     main: string;
     description: string;
-    icon: string;
-  }>;
+    icon: WeatherIconType;
+  }[];
   clouds: {
     all: number;
   };
@@ -56,25 +56,16 @@ export type ForecastList = {
   dt_txt: string;
 };
 
-export type AirQuality = {
-  coord: {
-    lon: number;
-    lat: number;
-  };
-  list: Array<{
-    main: {
-      aqi: number;
-    };
-    components: {
-      co: number;
-      no: number;
-      no2: number;
-      o3: number;
-      so2: number;
-      pm2_5: number;
-      pm10: number;
-      nh3: number;
-    };
-    dt: number;
-  }>;
-};
+export enum WeatherIcon {
+  CLEAR_SKY = "01",
+  FEW_CLOUDS = "02",
+  SCATTERED_CLOUDS = "03",
+  BROKEN_CLOUDS = "04",
+  SHOWER_RAIN = "09",
+  RAIN = "10",
+  THUNDERSTORM = "11",
+  SNOW = "13",
+  MIST = "50",
+}
+
+export type WeatherIconType = `${WeatherIcon}d` | `${WeatherIcon}n`;

@@ -14,6 +14,12 @@ const initialState: State = {
   isLoading: true,
 };
 
+const errorMessages = {
+  0: "You need to allow to access your location to use the application",
+  1: "An error occurred while trying to get your location",
+  2: "An error occurred while trying to get your location",
+};
+
 type Action =
   | { type: "SET_COORDS"; payload: GeolocationCoordinates }
   | { type: "SET_ERROR"; payload: GeolocationPositionError };
@@ -47,9 +53,12 @@ export function useCoords() {
       });
   }, []);
 
+  const errorMessage = errorMessages[error?.code as keyof typeof errorMessages];
+
   return {
     coords,
     error,
+    errorMessage,
     isLoading,
   };
 }

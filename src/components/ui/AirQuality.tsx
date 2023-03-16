@@ -1,29 +1,25 @@
 import Leaf from "@iconify-icons/mdi/leaf";
 import { Icon } from "@iconify/react/offline";
 
-import type { AirQuality } from "@weather/@types/Weather";
+import type { AirQuality } from "@weather/@types/AirQuality";
 
 type AirQualityProps = {
   data: AirQuality;
 };
 
 function getAirQualityStatus(aqi: number) {
-  if (aqi >= 0 && aqi <= 50) {
-    return "Good";
+  switch (true) {
+    case aqi >= 0 && aqi <= 50:
+      return "Good";
+    case aqi >= 51 && aqi <= 100:
+      return "Moderate";
+    case aqi >= 101 && aqi <= 200:
+      return "Not healthy";
+    case aqi >= 201 && aqi <= 300:
+      return "Very harmful to health";
+    default:
+      return "Dangerous";
   }
-  if (aqi >= 51 && aqi <= 100) {
-    return "Moderate";
-  }
-  if (aqi >= 101 && aqi <= 150) {
-    return "Not healthy";
-  }
-  if (aqi >= 151 && aqi <= 200) {
-    return "Not healthy";
-  }
-  if (aqi >= 201 && aqi <= 300) {
-    return "Very harmful to health";
-  }
-  return "Dangerous";
 }
 
 export function AirQuality({ data }: AirQualityProps) {

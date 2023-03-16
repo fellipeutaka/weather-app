@@ -1,11 +1,8 @@
 import type { AxiosRequestConfig } from "axios";
 import dayjs from "dayjs";
 
-import type {
-  AirQuality,
-  Forecast,
-  ForecastList,
-} from "@weather/@types/Weather";
+import type { AirQuality } from "@weather/@types/AirQuality";
+import type { Forecast, ForecastList } from "@weather/@types/Forecast";
 import { api } from "@weather/lib/axios";
 
 type FetchForecastProps = {

@@ -20,7 +20,7 @@ export function WeatherLoading({
   lottieRef.current?.setSpeed(speed);
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex h-screen flex-col items-center justify-center gap-4">
       <span className="loading text-2xl font-bold">{message}</span>
       <Lottie lottieRef={lottieRef} className="h-32 w-32" loop {...props} />
     </div>

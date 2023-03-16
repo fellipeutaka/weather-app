@@ -13,16 +13,14 @@ const lato = Lato({
 });
 
 export default function Home() {
-  const { coords, error, isLoading } = useCoords();
+  const { coords, error, errorMessage, isLoading } = useCoords();
 
   return (
     <SEO
       title="Weather App"
       description="A page with weather information based on your location."
     >
-      <main
-        className={`${lato.className} grid min-h-screen place-items-center`}
-      >
+      <div className={`${lato.className}`}>
         {isLoading && (
           <WeatherLoading
             message="Getting your coords"
@@ -30,9 +28,9 @@ export default function Home() {
             speed={0.5}
           />
         )}
-        {error && <WeatherError error={error} />}
+        {error && <WeatherError message={errorMessage} />}
         {coords && <Weather coords={coords} />}
-      </main>
+      </div>
     </SEO>
   );
 }

@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
-import type { AirQuality, Forecast } from "@weather/@types/Weather";
+import type { AirQuality } from "@weather/@types/AirQuality";
+import type { Forecast } from "@weather/@types/Forecast";
 import {
   fetchAirPollution,
   fetchForecast,

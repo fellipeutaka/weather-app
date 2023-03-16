@@ -4,7 +4,7 @@ import WeatherDust from "@iconify-icons/mdi/weather-dust";
 import WeatherRainy from "@iconify-icons/mdi/weather-rainy";
 import { Icon } from "@iconify/react/offline";
 
-import { Forecast } from "@weather/@types/Weather";
+import type { Forecast } from "@weather/@types/Forecast";
 
 import { Clouds } from "../icons/Clouds";
 
@@ -12,17 +12,28 @@ type TemperatureNowProps = {
   data: Forecast;
 };
 
+function getRainPercentage(amount?: number) {
+  return amount ? amount * 100 : 10;
+}
+
 export function TemperatureNow({ data }: TemperatureNowProps) {
   return (
-    <section className="relative w-full rounded-xl bg-secondary bg-image-temperature bg-cover bg-center bg-no-repeat">
-      <Clouds className="absolute -top-4 -left-16 z-10" aria-label="Clouds" />
-      <div className="absolute top-8 right-8 flex items-center gap-1 text-alternative">
-        <Icon icon={MapMarker} className="h-5 w-5" />
-        <span className="font-bold">
+    <section className="relative grid grid-rows-section rounded-xl bg-secondary bg-image-temperature bg-cover bg-center bg-no-repeat xl:row-span-full">
+      <Clouds
+        className="absolute -top-4 -left-16 z-10"
+        aria-label="Clouds icon"
+      />
+      <div className="flex items-center gap-1 justify-self-end px-8 pt-8 text-alternative">
+        <Icon
+          icon={MapMarker}
+          className="h-5 w-5"
+          aria-label="Map Marker icon"
+        />
+        <strong className="text-sm font-bold">
           {data.city.name}, {data.city.country}
-        </span>
+        </strong>
       </div>
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/3 text-center font-bold">
+      <div className="m-16 flex justify-center gap-1 font-bold">
         <div className="flex">
           <div>
             <strong className="text-8xl font-bold">
@@ -38,11 +49,11 @@ export function TemperatureNow({ data }: TemperatureNowProps) {
           <span className="text-2xl text-overshadow">°C</span>
         </div>
       </div>
-      <div className="absolute left-3 bottom-3 right-3 flex gap-2">
-        <div className="flex h-full w-full items-center gap-3 rounded-md bg-primary/60 px-4 py-3">
+      <div className="flex gap-2 p-3">
+        <div className="flex flex-1 items-center gap-3 rounded-md bg-tertiary/60 py-3 px-4">
           <Icon icon={WeatherDust} className="h-8 w-8 opacity-60" />
           <div>
-            <span className="text-sm">Wind</span>
+            <span className="text-xs">Wind</span>
             <div className="flex items-end gap-1">
               <span className="text-lg font-bold">
                 {Math.round(data.list[0].wind.speed)}
@@ -51,10 +62,10 @@ export function TemperatureNow({ data }: TemperatureNowProps) {
             </div>
           </div>
         </div>
-        <div className="flex h-full w-full items-center gap-3 rounded-md bg-primary/60 px-4 py-3">
+        <div className="flex flex-1 items-center gap-3 rounded-md bg-tertiary/60 py-3 px-4">
           <Icon icon={Humidity} className="h-8 w-8 opacity-60" />
           <div>
-            <span className="text-sm">Humidity</span>
+            <span className="text-xs">Humidity</span>
             <div className="flex items-end gap-1">
               <span className="text-lg font-bold">
                 {Math.round(data.list[0].main.humidity)}
@@ -63,12 +74,14 @@ export function TemperatureNow({ data }: TemperatureNowProps) {
             </div>
           </div>
         </div>
-        <div className="flex h-full w-full items-center gap-3 rounded-md bg-primary/60 px-4 py-3">
+        <div className="flex flex-1 items-center gap-3 rounded-md bg-tertiary/60 py-3 px-4">
           <Icon icon={WeatherRainy} className="h-8 w-8 opacity-60" />
           <div>
-            <span className="text-sm">Rain</span>
+            <span className="text-xs">Rain</span>
             <div className="flex items-end gap-1">
-              <span className="text-lg font-bold">10</span>
+              <span className="text-lg font-bold">
+                {getRainPercentage(data.list[0].rain?.["3h"])}
+              </span>
               <span className="text-overshadow">%</span>
             </div>
           </div>
