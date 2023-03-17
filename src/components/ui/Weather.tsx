@@ -53,7 +53,7 @@ export function Weather({ coords }: WeatherProps) {
   }
 
   return (
-    <main className="grid min-h-screen place-content-center gap-6 p-16 xl:grid-cols-main xl:grid-rows-main">
+    <main className="grid min-h-screen grid-cols-main-sm grid-rows-main-sm place-content-center gap-6 p-16 lg:grid-cols-main-lg lg:grid-rows-main-lg xl:grid-cols-main-xl xl:grid-rows-main-xl">
       <TemperatureNow data={data.forecast} />
       <AirQuality data={data.airPollution} />
       <SunTime />

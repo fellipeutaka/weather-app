@@ -18,7 +18,7 @@ function getRainPercentage(amount?: number) {
 
 export function TemperatureNow({ data }: TemperatureNowProps) {
   return (
-    <section className="relative grid grid-rows-section rounded-xl bg-secondary bg-image-temperature bg-cover bg-center bg-no-repeat xl:row-span-full">
+    <section className="relative col-span-2 grid grid-rows-section rounded-xl bg-secondary bg-image-temperature bg-cover bg-center bg-no-repeat xl:col-auto xl:row-span-full">
       <Clouds
         className="absolute -top-4 -left-16 z-10"
         aria-label="Clouds icon"

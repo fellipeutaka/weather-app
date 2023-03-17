@@ -4,10 +4,14 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        main: "30rem 18rem 18rem",
+        "main-xl": "30rem 18rem 18rem",
+        "main-lg": "18rem",
+        "main-sm": "18rem",
       },
       gridTemplateRows: {
-        main: "16rem 13rem", // "auto auto?"
+        "main-xl": "16rem 13rem",
+        "main-lg": "30rem 16rem 13rem",
+        "main-sm": "30rem 16rem 16rem 13rem",
         section: "max-content 1fr max-content",
       },
       colors: {
