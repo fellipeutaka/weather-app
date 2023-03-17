@@ -50,7 +50,7 @@ export function TemperatureNow({ data }: TemperatureNowProps) {
         </div>
       </div>
       <div className="flex gap-2 p-3">
-        <div className="flex flex-1 items-center gap-3 rounded-md bg-tertiary/60 py-3 px-4">
+        <div className="flex flex-1 items-center gap-3 rounded-md bg-tertiary/60 py-1 px-4">
           <Icon icon={WeatherDust} className="h-8 w-8 opacity-60" />
           <div>
             <span className="text-xs">Wind</span>
@@ -62,7 +62,7 @@ export function TemperatureNow({ data }: TemperatureNowProps) {
             </div>
           </div>
         </div>
-        <div className="flex flex-1 items-center gap-3 rounded-md bg-tertiary/60 py-3 px-4">
+        <div className="flex flex-1 items-center gap-3 rounded-md bg-tertiary/60 py-1 px-4">
           <Icon icon={Humidity} className="h-8 w-8 opacity-60" />
           <div>
             <span className="text-xs">Humidity</span>
@@ -74,7 +74,7 @@ export function TemperatureNow({ data }: TemperatureNowProps) {
             </div>
           </div>
         </div>
-        <div className="flex flex-1 items-center gap-3 rounded-md bg-tertiary/60 py-3 px-4">
+        <div className="flex flex-1 items-center gap-3 rounded-md bg-tertiary/60 py-1 px-4">
           <Icon icon={WeatherRainy} className="h-8 w-8 opacity-60" />
           <div>
             <span className="text-xs">Rain</span>

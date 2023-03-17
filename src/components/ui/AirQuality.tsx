@@ -26,7 +26,7 @@ export function AirQuality({ data }: AirQualityProps) {
   return (
     <section className="rounded-xl bg-secondary px-4 pb-4 pt-8 text-center">
       <header className="flex items-center justify-center gap-2 text-overshadow">
-        <Icon icon={Leaf} className="h-5 w-5" />
+        <Icon icon={Leaf} className="h-6 w-6" />
         <h1 className="font-bold">Air Quality</h1>
       </header>
       <div className="my-8 flex flex-col items-center">
@@ -35,42 +35,42 @@ export function AirQuality({ data }: AirQualityProps) {
         </span>
         <span className="text-5xl font-bold">{data.list[0].main.aqi}</span>
       </div>
-      <ul className="flex gap-4">
+      <ul className="flex justify-between gap-4">
         <li className="flex flex-col items-center">
-          <span className="text-sm font-bold text-teal-300">PM2.5</span>
-          <span className="text-xs">
+          <span className="text-sm font-bold text-teal-300">
             {Math.round(data.list[0].components.pm2_5)}
           </span>
+          <span className="text-xs">PM2.5</span>
         </li>
         <li className="flex flex-col items-center">
-          <span className="text-sm font-bold text-teal-300">PM10</span>
-          <span className="text-xs">
+          <span className="text-sm font-bold text-teal-300">
             {Math.round(data.list[0].components.pm10)}
           </span>
+          <span className="text-xs">PM10</span>
         </li>
         <li className="flex flex-col items-center">
-          <span className="text-sm font-bold text-teal-300">SO₂</span>
-          <span className="text-xs">
+          <span className="text-sm font-bold text-teal-300">
             {Math.round(data.list[0].components.so2)}
           </span>
+          <span className="text-xs">SO₂</span>
         </li>
         <li className="flex flex-col items-center">
-          <span className="text-sm font-bold text-teal-300">NO₂</span>
-          <span className="text-xs">
+          <span className="text-sm font-bold text-teal-300">
             {Math.round(data.list[0].components.no2)}
           </span>
+          <span className="text-xs">NO₂</span>
         </li>
         <li className="flex flex-col items-center">
-          <span className="text-sm font-bold text-teal-300">O₃</span>
-          <span className="text-xs">
+          <span className="text-sm font-bold text-teal-300">
             {Math.round(data.list[0].components.o3)}
           </span>
+          <span className="text-xs">O₃</span>
         </li>
         <li className="flex flex-col items-center">
-          <span className="text-sm font-bold text-teal-300">CO</span>
-          <span className="text-xs">
+          <span className="text-sm font-bold text-teal-300">
             {Math.round(data.list[0].components.co)}
           </span>
+          <span className="text-xs">CO</span>
         </li>
       </ul>
     </section>

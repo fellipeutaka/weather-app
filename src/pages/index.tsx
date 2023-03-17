@@ -20,7 +20,7 @@ export default function Home() {
       title="Weather App"
       description="A page with weather information based on your location."
     >
-      <div className={`${lato.className}`}>
+      <div className={lato.className}>
         {isLoading && (
           <WeatherLoading
             message="Getting your coords"
