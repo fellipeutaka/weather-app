@@ -6,12 +6,12 @@ module.exports = {
       gridTemplateColumns: {
         "main-xl": "30rem 18rem 18rem",
         "main-lg": "18rem",
-        "main-sm": "18rem",
+        "main-sm": "minmax(4rem, 16rem)",
       },
       gridTemplateRows: {
         "main-xl": "16rem 13rem",
         "main-lg": "30rem 16rem 13rem",
-        "main-sm": "30rem 16rem 16rem 13rem",
+        "main-sm": "minmax(12rem, 28rem) auto auto auto",
         section: "max-content 1fr max-content",
       },
       colors: {

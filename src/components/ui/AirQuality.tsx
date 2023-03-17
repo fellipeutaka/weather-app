@@ -24,7 +24,7 @@ function getAirQualityStatus(aqi: number) {
 
 export function AirQuality({ data }: AirQualityProps) {
   return (
-    <section className="rounded-xl bg-secondary px-4 pb-4 pt-8 text-center">
+    <section className="col-span-2 rounded-xl bg-secondary px-4 pb-4 pt-8 text-center lg:col-auto">
       <header className="flex items-center justify-center gap-2 text-overshadow">
         <Icon icon={Leaf} className="h-6 w-6" />
         <h1 className="font-bold">Air Quality</h1>
