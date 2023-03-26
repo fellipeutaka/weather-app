@@ -1,7 +1,6 @@
+import type { AirQuality } from "@/@types/AirQuality";
 import Leaf from "@iconify-icons/mdi/leaf";
 import { Icon } from "@iconify/react/offline";
-
-import type { AirQuality } from "@weather/@types/AirQuality";
 
 type AirQualityProps = {
   data: AirQuality;

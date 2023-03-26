@@ -1,10 +1,9 @@
+import type { Forecast } from "@/@types/Forecast";
 import MapMarker from "@iconify-icons/mdi/map-marker";
 import Humidity from "@iconify-icons/mdi/water-drop";
 import WeatherDust from "@iconify-icons/mdi/weather-dust";
 import WeatherRainy from "@iconify-icons/mdi/weather-rainy";
 import { Icon } from "@iconify/react/offline";
-
-import type { Forecast } from "@weather/@types/Forecast";
 
 import { Clouds } from "../icons/Clouds";
 

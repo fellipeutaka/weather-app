@@ -1,8 +1,8 @@
-import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-import satelliteAnimation from "@weather/assets/animations/lottie-satellite.json";
-import type { WeatherResponse } from "@weather/pages/api/weather";
+import satelliteAnimation from "@/assets/animations/lottie-satellite.json";
+import type { WeatherResponse } from "@/pages/api/weather";
+import { QueryFunctionContext, useQuery } from "@tanstack/react-query";
 
 import { Button } from "../form/Button";
 import { AirQuality } from "./AirQuality";

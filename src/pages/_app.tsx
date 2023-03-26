@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 
-import { QueryProvider } from "@weather/lib/reactQuery";
+import { QueryProvider } from "@/lib/reactQuery";
 
 import "../styles/globals.css";
 

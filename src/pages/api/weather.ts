@@ -1,12 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { z } from "zod";
 
-import type { AirQuality } from "@weather/@types/AirQuality";
-import type { Forecast } from "@weather/@types/Forecast";
-import {
-  fetchAirPollution,
-  fetchForecast,
-} from "@weather/utils/fetchWeatherData";
+import type { AirQuality } from "@/@types/AirQuality";
+import type { Forecast } from "@/@types/Forecast";
+import { fetchAirPollution, fetchForecast } from "@/utils/fetchWeatherData";
 
 const bodySchema = z.object({
   latitude: z.number(),

@@ -1,5 +1,5 @@
-import type { Forecast } from "@weather/@types/Forecast";
-import { getWeekWeatherDayName } from "@weather/utils/getWeekWeatherDayName";
+import type { Forecast } from "@/@types/Forecast";
+import { getWeekWeatherDayName } from "@/utils/getWeekWeatherDayName";
 
 import { WeekWeatherIcon } from "./WeekWeatherIcon";
 

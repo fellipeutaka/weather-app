@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 
-import { getCurrentPosition } from "@weather/utils/getCurrentPosition";
+import { getCurrentPosition } from "@/utils/getCurrentPosition";
 
 type State = {
   coords: GeolocationCoordinates | null;

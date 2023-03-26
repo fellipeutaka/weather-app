@@ -1,11 +1,11 @@
 import { Lato } from "next/font/google";
 
-import compassAnimation from "@weather/assets/animations/lottie-compass.json";
-import { Weather } from "@weather/components/ui/Weather";
-import { WeatherError } from "@weather/components/ui/WeatherError";
-import { WeatherLoading } from "@weather/components/ui/WeatherLoading";
-import { SEO } from "@weather/components/utils/SEO";
-import { useCoords } from "@weather/hooks/useCoords";
+import compassAnimation from "@/assets/animations/lottie-compass.json";
+import { Weather } from "@/components/ui/Weather";
+import { WeatherError } from "@/components/ui/WeatherError";
+import { WeatherLoading } from "@/components/ui/WeatherLoading";
+import { SEO } from "@/components/utils/SEO";
+import { useCoords } from "@/hooks/useCoords";
 
 const lato = Lato({
   weight: ["400", "700"],

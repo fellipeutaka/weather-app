@@ -1,4 +1,4 @@
-import { WeatherIconType, WeatherIcon } from "@weather/@types/Forecast";
+import { WeatherIconType, WeatherIcon } from "@/@types/Forecast";
 
 import { Clouds } from "../icons/Clouds";
 import { Cloudy } from "../icons/Cloudy";
